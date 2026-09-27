@@ -1,0 +1,45 @@
+
+/* Phase 9: minimal game screen; all other tools open on demand. */
+#game{--a9-gold:#d6ae72;--a9-bg:#121923;padding-bottom:90px!important}
+#game .game-top{display:none!important}
+#game .game-layout{display:block!important;max-width:1060px;margin:auto}
+#game .game-side,#game .a8-dock,#game .a6-quick,#game .a6-cinema-bar,#game .adv-tabs,
+#game .a8-context,#game .adv-stage,#game .a8-setup,#game .game-toolbar{display:none!important}
+#game .game-main{width:100%!important;max-width:100%!important;min-width:0!important}
+#game .game-scene{min-height:230px!important;max-height:440px!important;overflow:hidden!important}
+#game .game-scene-shade{max-width:100%!important;min-width:0!important}
+#game .game-story{max-height:340px!important;overflow-y:auto!important;min-height:90px!important}
+#game .game-choices{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
+#game .game-choice{width:100%!important;white-space:normal!important;min-height:48px}
+#game .game-form{max-width:100%!important}
+#game .a9-head{position:sticky;top:0;z-index:75;display:flex;align-items:center;gap:9px;justify-content:space-between;padding:9px 10px;margin:0 0 9px;background:#121923eF;border:1px solid #b8955a66;border-radius:15px;backdrop-filter:blur(15px)}
+#game .a9-head strong{color:#e9d2a4;font-size:14px}
+#game .a9-head small{color:#a9b6b8;font-size:11px;display:block}
+#game .a9-head button,#game .a9-dock button{background:#232d39;color:#f1dfbd;border:1px solid #98774e;border-radius:12px;min-height:44px;padding:8px 12px;font:inherit}
+#game .a9-dock{position:fixed;z-index:80;bottom:calc(8px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(580px,calc(100vw - 16px));display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;background:#131a24f5;border:1px solid #c29a5b77;border-radius:17px;padding:7px;box-shadow:0 0 35px #000a;backdrop-filter:blur(16px)}
+#game .a9-dock button{min-width:0;padding:7px 3px;font-size:12px}
+#game .a9-dock button.a9-main{background:#73542d;border-color:#e5bb7c}
+#game .a9-scrim{position:fixed;inset:0;background:#000b;z-index:1000}
+#game .a9-panel{position:fixed;z-index:1001;bottom:0;left:0;right:0;max-height:85dvh;overflow:auto;background:#171f2c;color:#eee0c7;border:1px solid #b99559;border-radius:22px 22px 0 0;padding:14px max(12px,env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom));box-shadow:0 -20px 75px #000c;direction:rtl}
+#game .a9-panel[hidden],#game .a9-scrim[hidden]{display:none!important}
+#game .a9-panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+#game .a9-panel-head h3{margin:0;color:#f0c88c}
+#game .a9-panel button{min-height:44px;max-width:100%;font:inherit}
+#game .a9-panel .a9-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#game .a9-menu button{border:1px solid #947348;border-radius:12px;background:#273242;color:#f1dfbf;padding:12px 6px}
+#game .a9-panel .game-side,#game .a9-panel .adv-stage,#game .a9-panel .game-toolbar,
+#game .a9-panel .a8-setup{display:block!important;position:static!important;transform:none!important;width:100%!important;max-width:100%!important}
+#game .a9-panel .game-widget{margin-bottom:12px}
+#game .a9-panel .adv-tabs{display:flex!important;overflow-x:auto}
+#game .a9-panel .adv-panel:not([hidden]){display:block!important;max-width:100%;overflow-wrap:anywhere}
+#game .a9-panel .a9-setup-wrap .game-toolbar{display:flex!important;flex-wrap:wrap;gap:8px}
+#game .a9-panel .a9-setup-wrap .game-toolbar>*{flex:1 1 170px}
+#game .a9-panel input,#game .a9-panel select,#game .a9-panel textarea{max-width:100%}
+#game .a9-panel .a9-tool{display:none!important}
+#game .a9-panel .a9-tool.a9-open{display:block!important}
+#game .a9-panel .a9-tool.a9-open.adv-stage{display:block!important}
+#game .a9-panel .a9-tool.a9-open.game-side{display:block!important}
+#game .a9-panel .a9-tool.a9-open.a9-setup-wrap{display:block!important}
+@media(max-width:850px){.sidebar{display:none!important}main.main{padding:8px!important}main.main>header{display:none!important}#game .game-scene{min-height:260px!important;height:auto!important;padding:10px!important}#game .game-scene-shade{padding:12px!important}#game .game-scene-shade h3{font-size:clamp(20px,6vw,29px)!important}#game .a9-panel .a9-menu{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:370px){#game .a9-dock button{font-size:11px}#game .a9-head strong{font-size:12px}}
+@media(prefers-reduced-motion:reduce){#game .a9-panel{scroll-behavior:auto}}
