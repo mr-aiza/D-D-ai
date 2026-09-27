@@ -1,0 +1,20 @@
+/* Stage 12: game-first home, location-aware live mini-map. */
+body.ir12-playing .sidebar,body.ir12-playing main.main>header,body.ir12-playing main.main>footer{display:none!important}
+body.ir12-playing .shell{display:block!important;max-width:100%!important}body.ir12-playing main.main{width:100%!important;max-width:1160px!important;margin:0 auto!important;padding:8px 12px 100px!important}
+body.ir12-playing #game{display:block!important;max-width:100%!important;overflow-x:clip}
+#game .a9-head{display:none!important}#game .a10-fab{left:14px;bottom:calc(15px + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:18px}
+#game .ir12-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid #aa8d5c77;border-radius:17px;background:linear-gradient(120deg,#26323c,#151c28);margin:0 0 10px;position:relative;z-index:2}
+#game .ir12-top strong{color:#e7c28b;font-size:15px}#game .ir12-top small{display:block;color:#b7c6c8;font-size:12px;max-width:56vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#game .ir12-top button{background:#303d47;border:1px solid #bb985e;border-radius:12px;color:#f4ddb6;padding:10px 12px;font:inherit;min-height:44px}
+#game .ir12-world{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,300px);gap:10px;margin-bottom:10px;align-items:stretch}
+#game .ir12-world .game-scene{margin:0!important;min-height:290px!important;height:auto!important;max-height:none!important}
+#game .ir12-mini{display:flex;flex-direction:column;min-width:0;background:linear-gradient(150deg,#263d3b,#14232b);border:1px solid #c3a06c;border-radius:17px;padding:10px;overflow:hidden;color:#efdbb9;text-align:right;font:inherit;cursor:pointer}
+#game .ir12-mini strong{font-size:15px}#game .ir12-mini small{font-size:11px;color:#b9c9c6}#game .ir12-map{position:relative;flex:1;min-height:165px;margin:9px 0;border-radius:12px;overflow:hidden;background:radial-gradient(ellipse at 32% 25%,#46604d 0,#263f39 35%,#172b34 70%);border:1px solid #9a8059}
+#game .ir12-map:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 25px,#d7c7a010 26px 27px),repeating-linear-gradient(90deg,transparent 0 25px,#d7c7a010 26px 27px);pointer-events:none}
+#game .ir12-path{position:absolute;inset:0;width:100%;height:100%;overflow:visible}#game .ir12-pin{position:absolute;width:18px;height:18px;border-radius:50%;background:#c0aa7e;border:2px solid #fff0c5;transform:translate(-50%,-50%);box-shadow:0 0 8px #0009}#game .ir12-pin.current{width:23px;height:23px;background:#f4c55d;box-shadow:0 0 0 6px #e3b85b33,0 0 22px #ffd27a;animation:ir12-pulse 2s infinite}#game .ir12-pin.unknown{opacity:.3;width:11px;height:11px}#game .ir12-place{font-size:13px;color:#f0ce92}
+#game .ir12-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}#game .ir12-actions button{flex:1 1 130px;background:#273640;color:#f2ddb6;border:1px solid #ae8e59;border-radius:12px;padding:12px;font:inherit;min-height:46px}
+#game .game-story{max-height:350px!important;overflow:auto!important;scrollbar-width:thin;border-radius:14px}#game .game-choices{grid-template-columns:repeat(3,minmax(0,1fr))!important}#game .game-form{margin-bottom:18px}
+#game .a10-offer{bottom:calc(90px + env(safe-area-inset-bottom))}#game .a10-sheet{z-index:501}#ir-site-navigation{z-index:700!important}
+@keyframes ir12-pulse{50%{box-shadow:0 0 0 10px #e3b85b12,0 0 25px #ffd27a}}
+@media(max-width:720px){body.ir12-playing main.main{padding:6px 8px 90px!important}#game .ir12-world{grid-template-columns:1fr}#game .ir12-world .game-scene{min-height:260px!important;max-height:none!important}#game .ir12-mini{min-height:150px}#game .ir12-map{min-height:100px;max-height:135px}#game .game-choices{grid-template-columns:1fr!important}#game .ir12-actions button{flex:1 1 44%}#game .game-story{max-height:none!important;overflow:visible!important}}
+@media(prefers-reduced-motion:reduce){#game .ir12-pin.current{animation:none}}
