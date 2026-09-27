@@ -1,0 +1,21 @@
+/* Separate global site navigation from in-game action drawer. */
+#ir-site-navigation{position:relative;z-index:10000;direction:rtl;font-family:inherit}
+#ir-site-trigger{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:10000;display:flex;align-items:center;gap:7px;padding:10px 13px;border:1px solid #d7ae70;border-radius:13px;background:#1a2531f2;color:#f4dcae;font:inherit;font-size:13px;min-height:46px;box-shadow:0 7px 25px #0009;cursor:pointer;backdrop-filter:blur(14px)}
+#ir-site-trigger span:first-child{font-size:20px;line-height:1}
+#ir-site-shade{position:fixed;inset:0;background:#000b;z-index:10001;backdrop-filter:blur(4px)}
+#ir-site-drawer{position:fixed;z-index:10002;top:0;right:0;bottom:0;width:min(355px,90vw);overflow:auto;background:linear-gradient(165deg,#243240,#101823);border-left:1px solid #b28b56;box-shadow:-20px 0 65px #000b;padding:calc(18px + env(safe-area-inset-top)) 15px calc(22px + env(safe-area-inset-bottom));color:#f1e0c1}
+#ir-site-shade[hidden],#ir-site-drawer[hidden]{display:none!important}
+#ir-site-drawer .ir-site-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px}
+#ir-site-drawer .ir-site-head strong{display:block;font-size:17px;color:#edc98b}
+#ir-site-drawer .ir-site-head small{display:block;font-size:12px;color:#abbac2;margin-top:4px}
+#ir-site-drawer button{font:inherit;cursor:pointer;min-height:48px}
+#ir-site-close{border:1px solid #aa8c60;border-radius:12px;background:#344150;color:#f3dcb9;padding:6px 12px}
+#ir-site-drawer .ir-site-links{display:grid;gap:9px}
+#ir-site-drawer .ir-site-links button{text-align:right;background:#293746;color:#f1e2c8;border:1px solid #9a7a4e;border-radius:13px;padding:13px 15px;transition:background .2s}
+#ir-site-drawer .ir-site-links button.current{background:#70522f;border-color:#e1b87c}
+#ir-site-drawer .ir-site-links button:focus-visible,#ir-site-trigger:focus-visible{outline:3px solid #f4d08b;outline-offset:2px}
+#ir-site-drawer .ir-site-note{font-size:12px;color:#a9b9c3;line-height:1.9;margin-top:25px}
+/* The existing game scene must not hide the global site navigation. */
+@media(max-width:850px){#ir-site-trigger{top:calc(8px + env(safe-area-inset-top));right:8px}main.main{padding-top:65px!important}#game .a9-head{padding-right:108px!important;min-height:56px}#game .a9-head strong{font-size:12px}}
+@media(min-width:851px){#ir-site-trigger{top:14px;right:14px}#game .a9-head{padding-right:118px!important}}
+@media(prefers-reduced-motion:reduce){#ir-site-drawer .ir-site-links button{transition:none}}
