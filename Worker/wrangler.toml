@@ -3,4 +3,10 @@ main = "worker.js"
 compatibility_date = "2026-09-01"
 [vars]
 ALLOWED_ORIGIN = "https://mr-aiza.github.io"
-AI_MODEL = "llama-3.3-70b-versatile"
+AI_MODEL = "openai/gpt-oss-120b"
+
+# Replace YOUR_D1_DATABASE_ID after creating the D1 database.
+[[d1_databases]]
+binding = "DB"
+database_name = "infinite-realms-saves"
+database_id = "YOUR_D1_DATABASE_ID"
