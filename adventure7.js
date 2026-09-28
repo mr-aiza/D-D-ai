@@ -4,9 +4,9 @@
 const game=document.querySelector('#game');if(!game)return;
 const $=s=>game.querySelector(s), safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const KEY='infinite-realms-adventure7';let db7={};try{db7=JSON.parse(localStorage.getItem(KEY)||'{}')}catch{};
-const cid=()=>$('#game-campaign')?.value||'none';const hero=()=>$('#game-hero')?.selectedOptions?.[0]?.textContent||'قهرمان';
+const campaignId=()=>$('#game-campaign')?.value||'none';const heroId=()=>$('#game-hero')?.value||'none';const cid=()=>campaignId()+'::'+heroId();const hero=()=>$('#game-hero')?.selectedOptions?.[0]?.textContent||'قهرمان';
 const fresh=()=>({hp:20,max:20,temp:0,ac:13,prof:2,stats:{str:10,dex:10,con:10,int:10,wis:10,cha:10},conditions:[],death:{success:0,fail:0},slots:[2,0,0,0,0,0,0,0,0],maxSlots:[2,0,0,0,0,0,0,0,0],inspiration:false,exhaustion:0,notes:[],log:[]});
-const state=()=>db7[cid()] ||= fresh();const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(db7))}catch{alert('فضای ذخیره مرورگر پر شده است؛ پشتیبان تهیه کن.')}};
+const state=()=>{if(!db7[cid()]){const base=db7[campaignId()];const char=window.db?.characters?.find(x=>x.id===heroId());db7[cid()]=base?JSON.parse(JSON.stringify(base)):{...fresh(),hp:Math.max(0,Number(char?.hp)||20),max:Math.max(1,Number(char?.hp)||20),ac:Number(char?.ac)||13};}return db7[cid()]};const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(db7));game.dispatchEvent(new CustomEvent('ir:state-change'))}catch{alert('فضای ذخیره مرورگر پر شده است؛ پشتیبان تهیه کن.')}};
 const roll=n=>{const a=new Uint32Array(1),limit=4294967296-(4294967296%n);do{crypto.getRandomValues(a)}while(a[0]>=limit);return a[0]%n+1};
 const mod=n=>Math.floor((Number(n)-10)/2);const fmt=n=>n>=0?'+'+n:String(n);
 const conditions=['کور','مسموم','وحشت‌زده','بی‌حرکت','بیهوش','زمین‌گیر','محدودشده','ناشنوا','نامرئی','افسون‌شده','فلج','سنگ‌شده'];
