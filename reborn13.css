@@ -1,0 +1,52 @@
+/* REBORN 13 — complete visual system layered safely over existing functional modules */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+:root{--r13-bg:#080e16;--r13-panel:#111e29;--r13-panel2:#1a2a34;--r13-line:#bd98675e;--r13-gold:#edc78b;--r13-ink:#f5efe4;--r13-muted:#b3c4ca;--r13-teal:#7dd8ca}
+html,body{background:var(--r13-bg)!important;color:var(--r13-ink);font-family:Vazirmatn,Tahoma,sans-serif!important;scroll-behavior:smooth}
+body.ir12-playing{background:radial-gradient(ellipse at 52% -12%,#273f45 0,transparent 42%),radial-gradient(ellipse at 100% 60%,#1a2836 0,transparent 48%),#080e16!important}
+body.ir12-playing main.main{max-width:1320px!important;padding:14px clamp(12px,3vw,40px) 95px!important}
+#game{font-family:Vazirmatn,Tahoma,sans-serif!important;--game-gold:var(--r13-gold)}
+#game button{cursor:pointer;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+#game button:active{transform:scale(.985)}#game :focus-visible{outline:2px solid var(--r13-teal)!important;outline-offset:3px}
+#game .ir12-top{background:linear-gradient(115deg,#16252eec,#111a25f5)!important;border:1px solid var(--r13-line)!important;box-shadow:0 15px 45px #0005;min-height:73px!important;padding:12px clamp(12px,2vw,24px)!important;border-radius:20px!important;margin-bottom:15px!important;z-index:5}
+#game .ir12-top strong{font-size:clamp(17px,2.2vw,24px)!important;letter-spacing:1.2px;color:var(--r13-gold)!important}#game .ir12-top small{font-size:12px!important;color:var(--r13-muted)!important}
+#game #ir12-site{border-radius:13px!important;background:#273b42!important;border:1px solid #bb9865!important;font-weight:700}
+#game .ir13-hero-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+#game .ir13-hero-meta .ir13-pill{border:1px solid #9d815d7c;background:#17252c;border-radius:99px;padding:7px 13px;font-size:12px;color:#e6d7bd;white-space:nowrap}
+#game .ir13-hero-meta .ir13-pill strong{color:var(--r13-teal)}
+#game .ir12-world{grid-template-columns:minmax(0,1fr) minmax(240px,320px)!important;gap:16px!important;align-items:stretch!important;margin-bottom:16px!important}
+#game .ir12-world .game-scene{min-height:360px!important;border:1px solid #d2b17b66!important;border-radius:23px!important;box-shadow:0 18px 50px #0007,inset 0 0 80px #0006!important;isolation:isolate}
+#game .game-scene-shade{background:linear-gradient(180deg,#0a131800,#08131be8)!important;backdrop-filter:blur(2px);border-radius:16px!important}
+#game .game-scene-shade h3{font-size:clamp(23px,3.2vw,44px)!important;line-height:1.55!important;color:#fff2d9!important;text-shadow:0 4px 20px #000c}
+#game .game-scene-shade p{color:#e0e8e5!important;line-height:1.95!important;font-size:clamp(13px,1.4vw,16px)!important}
+#game .ir12-mini{background:linear-gradient(160deg,#1c3939,#10232e 65%,#101923)!important;border:1px solid #c5a36f8c!important;border-radius:23px!important;box-shadow:0 18px 40px #0006!important;padding:17px!important;gap:5px}
+#game .ir12-mini strong{font-size:16px!important;color:#f4d6a1!important}#game .ir12-mini .ir12-map{min-height:200px!important;border:1px solid #9dc6aa5e!important;box-shadow:inset 0 0 40px #0009}
+#game .ir12-mini .ir12-place{color:#b5f1d9!important;font-weight:800;font-size:15px!important}
+#game .ir13-map-hint{color:#c3d7d0;font-size:11px;margin-top:4px}
+#game .ir12-actions{display:none!important}
+#game .ir13-section-label{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 0 9px;color:#e7c995;font-size:13px;font-weight:800}
+#game .ir13-section-label span{color:#9db3b9;font-size:11px;font-weight:500}
+#game .game-story{background:linear-gradient(145deg,#101c27,#101923)!important;border:1px solid #ab946f48!important;border-radius:19px!important;box-shadow:0 12px 35px #0004;max-height:460px!important;min-height:140px!important;overflow-y:auto!important;padding:clamp(12px,2vw,24px)!important;scrollbar-color:#91764c #16232c}
+#game .game-entry{border-radius:15px!important;padding:14px 16px!important;max-width:100%!important;margin-bottom:12px!important}
+#game .game-narrator{border-right:3px solid #c6a36a!important;background:#1c2b3488!important}
+#game .game-player{border-right:3px solid #75c8b4!important;background:#20363a77!important}
+#game .game-entry p{line-height:2!important;font-size:clamp(13px,1.3vw,15px)!important}
+#game .game-choices{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}
+#game .game-choice{background:linear-gradient(135deg,#20333c,#172630)!important;border:1px solid #c09c6b88!important;color:#f3e5cc!important;border-radius:14px!important;min-height:65px!important;padding:12px!important;text-align:right!important;line-height:1.8!important;box-shadow:0 5px 16px #0003}
+#game .game-choice:hover{background:#2b4246!important;border-color:#edc78b!important}
+#game .game-form{background:#14232cc9!important;border:1px solid #bca07566!important;border-radius:18px!important;margin-top:14px!important;padding:16px!important}
+#game .game-form label{font-weight:800;color:#e7cb9f}#game .game-compose{display:flex!important;gap:10px!important;align-items:stretch!important}
+#game .game-compose textarea{flex:1;min-width:0;background:#0d1822!important;border:1px solid #789b9966!important;color:#f7f1e7!important;border-radius:12px!important;padding:12px!important;resize:vertical}
+#game #game-send{background:linear-gradient(135deg,#d4aa70,#936736)!important;color:#131921!important;border:0!important;border-radius:12px!important;font-weight:900!important;min-width:150px!important}
+#game .a10-fab{position:fixed!important;bottom:calc(18px + env(safe-area-inset-bottom))!important;left:18px!important;z-index:90!important;width:66px!important;height:66px!important;border-radius:20px!important;background:linear-gradient(135deg,#d9b478,#846033)!important;color:#111b20!important;box-shadow:0 10px 40px #0009,0 0 0 4px #e7c58d26!important;font-weight:900}
+#game .a10-sheet{background:linear-gradient(150deg,#1a2c35,#0e1a24)!important;border-color:#d1ab73!important;border-radius:24px 24px 0 0!important;box-shadow:0 -22px 80px #000b!important}
+#game .a10-menu button{border-radius:14px!important;min-height:60px!important;background:#243841!important;border:1px solid #b99b6c77!important;color:#f4e8d3!important}
+#game .ir13-quick{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0 4px}
+#game .ir13-quick button{border:1px solid #9e8b6b77;border-radius:12px;padding:10px 13px;min-height:44px;background:#1a3038;color:#e8e1d2;font-weight:700}
+#game .ir13-quick button:hover{border-color:#e9c185;background:#2a4246}
+#game .ir13-welcome{background:linear-gradient(130deg,#213d3b,#14212e)!important;border:1px solid #c4a16e99;border-radius:22px;padding:22px;box-shadow:0 15px 50px #0008;margin:12px 0 20px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
+#game .ir13-welcome h3{font-size:clamp(20px,3vw,30px);color:#f2d3a0;margin:0 0 9px}#game .ir13-welcome p{color:#c3d3d2;line-height:2;margin:0}#game .ir13-welcome button{background:#d8af76;border:0;border-radius:12px;padding:13px 20px;color:#14212a;font-weight:900;min-height:48px}
+#game .ir13-welcome[hidden]{display:none!important}
+#game .ir13-footer-note{color:#8da7ac;text-align:center;font-size:11px;margin:20px 0}
+@media(max-width:900px){#game .ir12-world{grid-template-columns:minmax(0,1fr)!important}#game .ir12-mini{display:flex!important;min-height:170px!important}#game .ir12-mini .ir12-map{min-height:130px!important;max-height:180px!important}#game .game-choices{grid-template-columns:1fr!important}#game .game-compose{flex-direction:column!important}#game #game-send{width:100%!important}#game .ir13-welcome{grid-template-columns:1fr!important}#game .ir12-world .game-scene{min-height:290px!important}#game .ir13-hero-meta{gap:6px}#game .ir13-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#game .ir13-quick button{padding:9px 4px;font-size:12px}}
+@media(max-width:420px){body.ir12-playing main.main{padding:7px 9px 105px!important}#game .ir12-top{padding:10px!important}#game .ir12-top strong{font-size:15px!important}#game .ir12-top small{font-size:11px!important}#game .ir12-world .game-scene{min-height:270px!important}#game .ir12-mini .ir12-map{min-height:120px!important}#game .game-entry{padding:11px!important}}
+@media(prefers-reduced-motion:reduce){#game *{transition:none!important;animation-duration:.01ms!important}}

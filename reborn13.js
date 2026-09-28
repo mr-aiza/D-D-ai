@@ -1,0 +1,22 @@
+/* REBORN 13 — clear, game-first presentation. Keeps every prior module intact. */
+'use strict';(()=>{
+const game=document.getElementById('game');if(!game)return;
+const $=s=>game.querySelector(s),layout=$('.game-layout'),top=$('.ir12-top');if(!layout||!top)return;
+const getGame=()=>{try{return JSON.parse(localStorage.getItem('infinite-realms-game-v1')||'{}')}catch{return {}}};
+const getRpg=()=>{try{return JSON.parse(localStorage.getItem('infinite-realms-stage10')||'{}')}catch{return {}}};
+const current=()=>$('#game-campaign')?.value||getGame().current||'';
+const topMeta=document.createElement('div');topMeta.className='ir13-hero-meta';topMeta.setAttribute('aria-label','وضعیت فعلی بازی');top.after(topMeta);
+const welcome=document.createElement('section');welcome.className='ir13-welcome';welcome.hidden=true;welcome.innerHTML='<div><h3>⚜ افسانه تو از اینجا شروع می‌شود</h3><p id="ir13-welcome-text">برای شروع یک کمپین و یک قهرمان انتخاب کن.</p></div><button type="button" id="ir13-start">شروع ماجراجویی ←</button>';topMeta.after(welcome);
+const world=$('.ir12-world');if(world){const hint=document.createElement('span');hint.className='ir13-map-hint';hint.textContent='● نشان روشن = موقعیت فعلی؛ برای مشاهده اطلس لمس کن';$('.ir12-mini')?.append(hint)}
+const story=$('#game-story');if(story){const h=document.createElement('div');h.className='ir13-section-label';h.innerHTML='📖 داستان تو <span>انتخاب‌ها سرنوشتت را تغییر می‌دهند</span>';story.before(h)}
+const choices=$('#game-choices');if(choices){const h=document.createElement('div');h.className='ir13-section-label';h.innerHTML='✦ تصمیم بعدی <span>یا اقدام دلخواهت را بنویس</span>';choices.before(h)}
+const quick=document.createElement('div');quick.className='ir13-quick';quick.setAttribute('aria-label','ابزارهای سریع');quick.innerHTML='<button type="button" data-r13="map">🗺 نقشه کامل</button><button type="button" data-r13="inventory">🎒 کوله‌پشتی</button><button type="button" data-r13="abilities">✨ مهارت و جادو</button><button type="button" data-r13="context">⚔ اقدام صحنه</button>';
+$('.game-form')?.before(quick);
+const note=document.createElement('div');note.className='ir13-footer-note';note.textContent='همه ابزارهای پیشرفته از دکمه طلایی «بازی» در پایین صفحه در دسترس‌اند.';$('.game-form')?.after(note);
+function openTool(key){const fab=$('#a10-fab');if(!fab)return;const sheet=$('#a10-sheet');if(sheet&&!sheet.hidden){$('#a10-close')?.click()}fab.click();const b=$('#a10-content [data-open="'+key+'"]');if(b)b.click()}
+quick.addEventListener('click',e=>{const b=e.target.closest('[data-r13]');if(b)openTool(b.dataset.r13)});
+function page(name){const trigger=document.getElementById('ir-site-trigger');if(trigger){trigger.click();const b=document.querySelector('#ir-site-drawer [data-page="'+name+'"]');if(b){b.click();return}}document.querySelector('#nav [data-page="'+name+'"]')?.click()}
+$('#ir13-start').onclick=()=>{if(!$('#game-campaign')?.value){page('generator');return}if(!$('#game-hero')?.value){page('characters');return}$('#game-begin')?.click();welcome.hidden=true};
+function render(){const cid=current(),g=getGame(),r=getRpg().campaigns?.[cid],messages=g.states?.[cid]?.messages||[],hero=$('#game-hero')?.selectedOptions?.[0]?.textContent||'قهرمان انتخاب نشده',map=r?.maps?.[r?.activeMap||'overworld'],place=map?.places?.find(p=>p.id===map.active);topMeta.replaceChildren();const labels=[['🛡 قهرمان',hero],['📍 موقعیت',place?.name||'اردوگاه آغازین'],['📖 پیشرفت',messages.length?`${Math.floor(messages.length/2)} نوبت`:'شروع نشده']];for(const [k,v] of labels){const chip=document.createElement('span');chip.className='ir13-pill';const strong=document.createElement('strong');strong.textContent=k+' ';chip.append(strong,document.createTextNode(v));topMeta.append(chip)}welcome.hidden=!!messages.length;$('#ir13-welcome-text').textContent=!cid?'ابتدا ماجراجویی تازه‌ای بساز تا داستان آغاز شود.':!$('#game-hero')?.value?'یک قهرمان بساز و سپس وارد ماجراجویی شو.':'همه‌چیز آماده است؛ دکمه شروع را بزن و اولین انتخابت را انجام بده.';$('#ir13-start').textContent=!cid?'ساخت کمپین ←':!$('#game-hero')?.value?'ساخت قهرمان ←':'شروع ماجراجویی ←'}
+$('#game-campaign')?.addEventListener('change',render);$('#game-hero')?.addEventListener('change',render);game.addEventListener('ir:state-change',render);if(story)new MutationObserver(render).observe(story,{childList:true,subtree:true});window.addEventListener('storage',e=>{if(['infinite-realms-game-v1','infinite-realms-stage10'].includes(e.key))render()});render();
+})();
